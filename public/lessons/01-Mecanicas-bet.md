@@ -103,9 +103,12 @@ Geralmente, simplificamos para 2 ou 3 tamanhos de aposta padrão para cobrir a m
 
 # Exercicio
 
-Baseado nos conceitos que vimos, monte uma estrategia, com 2 ou 3 tamanhos de size, na situação BB(hero) x CO(villain), para os seguintes boards:
+Baseado nos conceitos que vimos, monte uma estratégia, com 2 ou 3 tamanhos de size, na situação **BB (Hero) vs CO (Villain)**.
 
-| Range BB (BB vs CO 3-Bet) | Range CO (BB vs CO 3-Bet) |
+**Cenário:** Houve um **Open Raise do Cutoff (CO)** e uma **3-Bet do Big Blind (BB)**. O CO pagou.
+As imagens abaixo mostram os **Ranges no Flop**:
+
+| Range BB (3-Bettor) | Range CO (Caller) |
 | :---: | :---: |
 | <img src="/images/range-flop-BB(BBxCO-3bet).png" width="400"> | <img src="/images/range-flop-CO(BBxCO-3bet).png" width="400"> |
 
