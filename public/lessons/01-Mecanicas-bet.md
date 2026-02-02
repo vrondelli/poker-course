@@ -112,10 +112,10 @@ As imagens abaixo mostram os **Ranges no Flop**:
 | :---: | :---: |
 | <img src="/images/range-flop-BB(BBxCO-3bet).png" width="400"> | <img src="/images/range-flop-CO(BBxCO-3bet).png" width="400"> |
 
-1. HML rainbow (Ex: [cards: K♠ 8♥ 3♦])
-2. HML monotone (Ex: [cards: K♠ 8♠ 3♠])
-3. HML two tone (Ex: [cards: K♠ 8♠ 3♦])
-4. HHL paired (Ex: [cards: K♠ K♥ 3♦])
+1. **A-High Rainbow:** (Ex: [cards: A♠ 8♥ 3♦])
+2. **MML Two-tone:** (Ex: [cards: 9♠ 8♠ 4♦])
+3. **MLL Monotone:** (Ex: [cards: 7♠ 4♠ 2♠])
+4. **HHL Connected:** (Ex: [cards: K♠ Q♥ 3♦])
 
 
 
