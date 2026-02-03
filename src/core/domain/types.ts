@@ -12,7 +12,7 @@ export type Flop = [Card, Card, Card];
 export type BoardTexture = 'Rainbow' | 'Two-tone' | 'Monotone';
 export type BoardStructure = 'HHH' | 'HHM' | 'HHL' | 'HMM' | 'HML' | 'HLL' | 'MMM' | 'MML' | 'MLL' | 'LLL';
 export type BoardPairing = 'Unpaired' | 'Paired' | 'Trips';
-export type BoardConnectivity = 'Disconnected' | 'Low Connected' | 'Connected' | 'Highly Connected';
+export type BoardConnectivity = 'Disconnected' | 'Connected';
 
 export interface FlopCategory {
   texture: BoardTexture;

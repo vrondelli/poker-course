@@ -257,6 +257,20 @@ export const TrainerPage: React.FC = () => {
         {/* Header Stats / Round Results Controller */}
         <header className={`flex flex-col md:flex-row justify-between items-center bg-zinc-900 border ${showRoundResults ? 'border-blue-500/30 py-4 px-10' : 'border-zinc-800 p-4 md:p-6'} rounded-[2.5rem] backdrop-blur-md shadow-xl gap-4 transition-all duration-500`}>
           <div className="flex flex-col md:flex-row items-center gap-6">
+            {/* Back to Course Button */}
+            <a 
+              href="index.html" 
+              className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors group"
+              title="Voltar ao Curso"
+            >
+              <span className="bg-zinc-800 p-2 rounded-lg group-hover:bg-zinc-700 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+              </span>
+              <span className="uppercase text-[10px] font-black tracking-widest hidden md:inline">Voltar</span>
+            </a>
+
             <div className="text-center md:text-left">
               <h2 className={`${showRoundResults ? 'text-4xl' : 'text-3xl'} font-black italic uppercase tracking-tighter bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent transition-all`}>
                 {showRoundResults ? 'Rodada Finalizada' : 'Treino em Curso'}

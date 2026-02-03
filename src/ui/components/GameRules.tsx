@@ -63,33 +63,35 @@ export const GameRules: React.FC = () => {
         Guia de Classificação
       </h3>
       
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 px-4 md:px-8 relative z-10">
-        {/* Agrupamento de Ranks */}
-        <div className="flex-[1.4] space-y-5">
-           <div className="flex items-center gap-4 border-b border-zinc-800 pb-3 mx-2">
-             <span className="text-purple-400 font-bold text-xl md:text-2xl tracking-tighter">Structure</span>
-             <span className="text-zinc-500 text-base font-light">(Ranks)</span>
-           </div>
-           
-           <div className="flex gap-3 font-mono">
-             {ranks.map(rank => (
-               <div key={rank.label} className="flex-1">
-                 <RankBox {...rank} />
-               </div>
-             ))}
-           </div>
-
-           <div className="bg-zinc-800/20 p-5 md:p-6 rounded-xl border-l-4 border-purple-500/40 mx-auto max-w-sm backdrop-blur-sm text-center">
-             <p className="text-zinc-500 text-xs font-bold mb-1 uppercase tracking-widest">Exemplo:</p>
-             <p className="text-zinc-200 text-base leading-relaxed">
-               Um flop <span className="text-white font-black underline decoration-blue-500 decoration-1 underline-offset-2">A 8 2</span> é <span className="italic tracking-tighter text-xl"><span className="text-blue-400 font-extrabold">H</span><span className="text-yellow-400 font-extrabold">M</span><span className="text-red-400 font-extrabold">L</span></span>.
-             </p>
-           </div>
-        </div>
-
-        {/* Agrupamento de Naipes e Conectividade */}
-        <div className="flex-1 space-y-10">
-          <div className="space-y-5">
+      <div className="flex flex-col gap-10 lg:gap-12 px-4 md:px-8 relative z-10 w-full">
+        
+        {/* Top Row: Structure & Texture */}
+        <div className="flex flex-col lg:flex-row gap-8 w-full">
+          {/* Agrupamento de Ranks (Structure) */}
+          <div className="flex-1 space-y-5">
+             <div className="flex items-center gap-4 border-b border-zinc-800 pb-3 mx-2">
+               <span className="text-purple-400 font-bold text-xl md:text-2xl tracking-tighter">Structure</span>
+               <span className="text-zinc-500 text-base font-light">(Ranks)</span>
+             </div>
+             
+             <div className="flex gap-3 font-mono">
+               {ranks.map(rank => (
+                 <div key={rank.label} className="flex-1">
+                   <RankBox {...rank} />
+                 </div>
+               ))}
+             </div>
+ 
+             <div className="bg-zinc-800/20 p-5 md:p-6 rounded-xl border-l-4 border-purple-500/40 mx-auto max-w-sm backdrop-blur-sm text-center">
+               <p className="text-zinc-500 text-xs font-bold mb-1 uppercase tracking-widest">Exemplo:</p>
+               <p className="text-zinc-200 text-base leading-relaxed">
+                 Um flop <span className="text-white font-black underline decoration-blue-500 decoration-1 underline-offset-2">A 8 2</span> é <span className="italic tracking-tighter text-xl"><span className="text-blue-400 font-extrabold">H</span><span className="text-yellow-400 font-extrabold">M</span><span className="text-red-400 font-extrabold">L</span></span>.
+               </p>
+             </div>
+          </div>
+ 
+          {/* Agrupamento de Naipes (Texture) */}
+          <div className="flex-1 space-y-5">
              <div className="flex items-center gap-4 border-b border-zinc-800 pb-3 mx-2">
                <span className="text-blue-400 font-bold text-xl md:text-2xl tracking-tighter">Texture</span>
                <span className="text-zinc-500 text-base font-light">(Naipes)</span>
@@ -99,34 +101,28 @@ export const GameRules: React.FC = () => {
                {textures.map(tex => <TextureRow key={tex.id} {...tex} />)}
              </ul>
           </div>
-
-          <div className="space-y-5">
-             <div className="flex items-center gap-4 border-b border-zinc-800 pb-3 mx-2">
-               <span className="text-green-400 font-bold text-xl md:text-2xl tracking-tighter">Connectivity</span>
-               <span className="text-zinc-500 text-base font-light">(Sequência)</span>
-             </div>
-             
-             <ul className="grid grid-cols-2 gap-3">
-               <li className="bg-zinc-800/40 p-3 rounded-lg border border-zinc-800 text-center">
-                 <div className="text-green-400 font-black text-sm uppercase mb-1">Highly</div>
-                 <div className="text-white font-bold text-xs uppercase tracking-widest">T 9 8</div>
-               </li>
-               <li className="bg-zinc-800/40 p-3 rounded-lg border border-zinc-800 text-center">
-                 <div className="text-green-500 font-black text-sm uppercase mb-1">Connected</div>
-                 <div className="text-white font-bold text-xs uppercase tracking-widest">T 8 7</div>
-               </li>
-               <li className="bg-zinc-800/40 p-3 rounded-lg border border-zinc-800 text-center">
-                 <div className="text-yellow-500/80 font-black text-sm uppercase mb-1">Low</div>
-                 <div className="text-white font-bold text-xs uppercase tracking-widest">T 7 2</div>
-               </li>
-               <li className="bg-zinc-800/40 p-3 rounded-lg border border-zinc-800 text-center">
-                 <div className="text-zinc-500 font-black text-sm uppercase mb-1">None</div>
-                 <div className="text-white font-bold text-xs uppercase tracking-widest">K 7 2</div>
-               </li>
-             </ul>
-             <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-[0.2em] text-center italic">Baseado em combos de Straight Draw</p>
-          </div>
         </div>
+
+        {/* Bottom Row: Connectivity */}
+        <div className="w-full space-y-5">
+           <div className="flex items-center gap-4 border-b border-zinc-800 pb-3 mx-2">
+             <span className="text-green-400 font-bold text-xl md:text-2xl tracking-tighter">Connectivity</span>
+             <span className="text-zinc-500 text-base font-light">(Sequência)</span>
+           </div>
+           
+           <ul className="grid grid-cols-2 gap-3 w-full">
+             <li className="bg-zinc-800/40 p-3 rounded-lg border border-zinc-800 text-center flex flex-col justify-center min-h-[80px]">
+               <div className="text-green-400 font-black text-sm uppercase mb-1">Conectado</div>
+               <div className="text-white font-bold text-xs uppercase tracking-widest">T 9 8</div>
+             </li>
+             <li className="bg-zinc-800/40 p-3 rounded-lg border border-zinc-800 text-center flex flex-col justify-center min-h-[80px]">
+               <div className="text-zinc-500 font-black text-sm uppercase mb-1">Desconectado</div>
+               <div className="text-white font-bold text-xs uppercase tracking-widest">K 7 2</div>
+             </li>
+           </ul>
+           <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-[0.2em] text-center italic mt-2">Baseado em combos de Straight Draw</p>
+        </div>
+
       </div>
     </div>
   );

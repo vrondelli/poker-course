@@ -21,7 +21,7 @@ interface Props {
 
 const TEXTURE_OPTIONS: BoardTexture[] = ['Rainbow', 'Two-tone', 'Monotone'];
 const PAIRING_OPTIONS: BoardPairing[] = ['Unpaired', 'Paired', 'Trips'];
-const CONNECTIVITY_OPTIONS: BoardConnectivity[] = ['Disconnected', 'Low Connected', 'Connected', 'Highly Connected'];
+const CONNECTIVITY_OPTIONS: BoardConnectivity[] = ['Disconnected', 'Connected'];
 
 export const Table: React.FC<Props> = ({ 
   tableState, 
@@ -68,9 +68,7 @@ export const Table: React.FC<Props> = ({
   };
 
   const getConnectivityBg = (opt: BoardConnectivity) => {
-    if (opt === 'Low Connected') return 'bg-red-700/40';
-    if (opt === 'Connected') return 'bg-yellow-500/50';
-    if (opt === 'Highly Connected') return 'bg-blue-500/60 shadow-[inset_0_0_10px_rgba(59,130,246,0.2)]';
+    if (opt === 'Connected') return 'bg-green-500/50 shadow-[inset_0_0_10px_rgba(34,197,94,0.2)]';
     return 'bg-red-900/40';
   };
 
@@ -205,14 +203,14 @@ export const Table: React.FC<Props> = ({
           <div className="flex justify-between px-1">
             <span className="text-xs uppercase text-green-400 font-bold tracking-wider font-mono">Connectivity</span>
           </div>
-          <div className={`grid grid-cols-4 w-fit mx-auto ${showResult ? 'gap-1.5' : 'gap-3'}`}>
+          <div className={`grid grid-cols-2 w-fit mx-auto ${showResult ? 'gap-1.5' : 'gap-3'}`}>
             {CONNECTIVITY_OPTIONS.map(opt => (
               <WizardButton
                 key={opt}
-                label={opt}
+                label={opt === 'Connected' ? 'Conectado' : 'Desconectado'}
                 selected={connectivity === opt}
                 onClick={() => onPartialUpdate('connectivity', opt)}
-                color={opt === 'Highly Connected' ? 'blue' : opt === 'Connected' ? 'yellow' : 'red'}
+                color={opt === 'Connected' ? 'green' : 'red'}
                 disabled={showResult}
                 correct={showResult && correct.connectivity === opt}
                 wrong={showResult && connectivity === opt && correct.connectivity !== opt}

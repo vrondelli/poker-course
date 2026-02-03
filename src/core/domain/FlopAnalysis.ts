@@ -88,11 +88,10 @@ export const analyzeFlop = (flop: Flop): FlopCategory => {
   
   const structure = types.join('') as BoardStructure;
 
+
   const score = getConnectivityScore(ranks);
   let connectivity: FlopCategory['connectivity'] = 'Disconnected';
-  if (score >= 16) connectivity = 'Highly Connected';
-  else if (score >= 5) connectivity = 'Connected';
-  else if (score >= 1) connectivity = 'Low Connected';
+  if (score >= 5) connectivity = 'Connected';
 
   const hasAce = ranks.includes('A');
 
