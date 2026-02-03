@@ -95,7 +95,7 @@ export const Table: React.FC<Props> = ({
     connectivity === correct.connectivity;
 
   return (
-    <div className={`bg-zinc-900 border ${showResult ? (isTableCorrect ? 'border-green-500/50 shadow-green-500/10' : 'border-red-500/50 shadow-red-500/10') : 'border-zinc-700'} rounded-2xl ${showResult ? 'p-2 md:p-3 gap-1' : 'p-4 md:p-6 gap-5 md:gap-6'} flex flex-col shadow-lg w-full max-w-sm md:max-w-none md:w-full mx-auto transition-all ${!showResult && 'hover:scale-[1.02]'} duration-200 relative`}>
+    <div className={`bg-zinc-900 border ${showResult ? (isTableCorrect ? 'border-green-500/50 shadow-green-500/10' : 'border-red-500/50 shadow-red-500/10') : 'border-zinc-700'} rounded-2xl p-3 md:p-4 gap-3 flex flex-col shadow-lg w-full max-w-sm md:max-w-none md:w-full mx-auto transition-all ${!showResult && 'hover:scale-[1.01]'} duration-200 relative`}>
       {/* Header / Timer / Result Label */}
       <div className="flex flex-col gap-2">
         {!showResult ? (
@@ -113,26 +113,26 @@ export const Table: React.FC<Props> = ({
       </div>
 
       {/* Flop Display */}
-      <div className={`flex justify-center gap-4 md:gap-6 relative ${showResult ? 'h-16' : 'h-24 md:h-36'} items-center bg-zinc-800/30 rounded-xl p-4 transition-all overflow-hidden`}>
+      <div className={`flex justify-center gap-2 md:gap-6 relative h-16 md:h-28 items-center bg-zinc-800/30 rounded-xl p-1 md:p-2 transition-all overflow-hidden`}>
         {[...tableState.flop].sort((a, b) => {
           const order = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2'];
           return order.indexOf(a.rank) - order.indexOf(b.rank);
         }).map((card) => (
-          <div key={`${tableState.id}-${card.rank}${card.suit}`} className={`transform ${showResult ? 'scale-[0.8]' : 'scale-1.1 md:scale-135'} transition-all`}>
+          <div key={`${tableState.id}-${card.rank}${card.suit}`} className={`transform ${showResult ? 'scale-[0.85] md:scale-110' : 'scale-[0.85] md:scale-110'} transition-all`}>
              <Card card={card} theme={cardTheme} />
           </div>
         ))}
       </div>
 
       {/* Synchronized Wizard Controls / Results */}
-      <div className={`w-full flex-1 flex flex-col ${showResult ? 'space-y-0.5' : 'space-y-4'}`}>
+      <div className={`w-full flex-1 flex flex-col space-y-2`}>
         
         {/* Step 1: Texture */}
-        <div className={`flex flex-col ${showResult ? 'gap-0' : 'gap-1 md:gap-2'} animate-in fade-in duration-300`}>
+        <div className={`flex flex-col gap-1 animate-in fade-in duration-300`}>
           <div className="flex justify-between px-1">
             <span className="text-xs uppercase text-blue-400 font-bold tracking-wider font-mono">Texture</span>
           </div>
-          <div className={`grid grid-cols-3 w-fit mx-auto ${showResult ? 'gap-1.5' : 'gap-3'}`}>
+          <div className={`grid grid-cols-3 w-fit mx-auto gap-2`}>
             {TEXTURE_OPTIONS.map(opt => (
               <WizardButton
                 key={opt}
@@ -144,7 +144,7 @@ export const Table: React.FC<Props> = ({
                 disabled={showResult}
                 correct={showResult && correct.texture === opt}
                 wrong={showResult && texture === opt && correct.texture !== opt}
-                size={showResult ? 'sm' : 'md'}
+                size="sm"
                 customBg={getTextureBg(opt)}
               />
             ))}
@@ -152,11 +152,11 @@ export const Table: React.FC<Props> = ({
         </div>
 
         {/* Step 2: Structure */}
-        <div className={`flex flex-col ${showResult ? 'gap-0' : 'gap-1 md:gap-2'} animate-in fade-in duration-300`}>
+        <div className={`flex flex-col gap-1 animate-in fade-in duration-300`}>
           <div className="flex justify-between px-1">
             <span className="text-xs uppercase text-purple-400 font-bold tracking-wider font-mono">Structure</span>
           </div>
-          <div className={`grid grid-cols-4 w-fit mx-auto ${showResult ? 'gap-1.5' : 'gap-3'}`}> 
+          <div className={`grid grid-cols-4 w-fit mx-auto gap-2`}> 
             {structureOptions.map(opt => (
               <WizardButton
                 key={opt}
@@ -176,11 +176,11 @@ export const Table: React.FC<Props> = ({
         </div>
 
         {/* Step 3: Pairing */}
-        <div className={`flex flex-col ${showResult ? 'gap-0' : 'gap-1 md:gap-2'} animate-in fade-in duration-300`}>
+        <div className={`flex flex-col gap-1 animate-in fade-in duration-300`}>
           <div className="flex justify-between px-1">
             <span className="text-xs uppercase text-orange-400 font-bold tracking-wider font-mono">Pairing</span>
           </div>
-          <div className={`grid w-fit mx-auto ${showResult ? 'grid-cols-3 gap-1.5' : 'grid-cols-3 gap-3'}`}>
+          <div className={`grid w-fit mx-auto grid-cols-3 gap-2`}>
             {PAIRING_OPTIONS.map(opt => (
               <WizardButton
                 key={opt}
@@ -191,7 +191,7 @@ export const Table: React.FC<Props> = ({
                 disabled={showResult}
                 correct={showResult && correct.pairing === opt}
                 wrong={showResult && pairing === opt && correct.pairing !== opt}
-                size={showResult ? 'sm' : 'md'}
+                size="sm"
                 customBg={getPairingBg(opt)}
               />
             ))}
@@ -199,11 +199,11 @@ export const Table: React.FC<Props> = ({
         </div>
 
         {/* Step 4: Connectivity */}
-        <div className={`flex flex-col ${showResult ? 'gap-0' : 'gap-1 md:gap-2'} animate-in fade-in duration-300`}>
+        <div className={`flex flex-col gap-1 animate-in fade-in duration-300`}>
           <div className="flex justify-between px-1">
             <span className="text-xs uppercase text-green-400 font-bold tracking-wider font-mono">Connectivity</span>
           </div>
-          <div className={`grid grid-cols-2 w-fit mx-auto ${showResult ? 'gap-1.5' : 'gap-3'}`}>
+          <div className={`grid grid-cols-2 w-fit mx-auto gap-2`}>
             {CONNECTIVITY_OPTIONS.map(opt => (
               <WizardButton
                 key={opt}

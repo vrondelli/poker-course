@@ -349,7 +349,7 @@ export const TrainerPage: React.FC = () => {
 
         {/* Tables Grid - Centered for single flop */}
         <div className="flex flex-1 items-center justify-center py-4">
-          <div className="w-full max-w-2xl">
+          <div className="w-full max-w-xl">
           {tables.map(table => (
             <div key={table.id} className="flex justify-center w-full">
               <Table 

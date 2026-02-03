@@ -129,8 +129,8 @@ main {
 
 .markdown-body p {
   margin-bottom: 1.25rem;
-  font-size: 1.15rem; /* Increased from 1.05rem */
-  line-height: 1.7;
+  font-size: 1.25rem; /* Increased further for better readability */
+  line-height: 1.75;
 }
 
 .markdown-body strong, .markdown-body b {
@@ -141,6 +141,8 @@ main {
 .markdown-body ul, .markdown-body ol {
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
+  font-size: 1.25rem; /* Match paragraph size */
+  line-height: 1.75;
 }
 
 .markdown-body li {
@@ -377,14 +379,95 @@ main {
     width: 100%;
   }
 
-  /* Responsive Tables */
-  .markdown-body table {
+  /* Responsive Tables - Stacked Column View */
+  .markdown-body table, .markdown-body thead, .markdown-body tbody, .markdown-body th, .markdown-body td, .markdown-body tr {
     display: block;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap; /* Prevent ugly wrapping in tight cells */
   }
+
+  .markdown-body thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .markdown-body tr {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .markdown-body td {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+    white-space: normal; /* Allow text wrapping */
+  }
+
+  .markdown-body td:last-child {
+    border-bottom: none;
+  }
+
+  .markdown-body td:before {
+    /* Now behave like a table header */
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    color: var(--text-muted);
+    content: attr(data-label);
+  }
+}
+
+/* Lightbox Styles */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+#lightbox.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#lightbox img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+#lightbox.visible img {
+  transform: scale(1);
+}
+
+.markdown-body img {
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+
+.markdown-body img:hover {
+  opacity: 0.9;
 }
 
 /* Menu toggle hidden on desktop */

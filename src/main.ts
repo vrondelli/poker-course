@@ -56,7 +56,12 @@ app.innerHTML = `
         <p style="color: var(--text-muted);">Select a lesson to begin</p>
       </div>
     </div>
+      </div>
+    </div>
   </main>
+  <div id="lightbox" aria-hidden="true">
+    <img src="" alt="Zoomed Content">
+  </div>
 `
 
 const lessonListEl = document.getElementById('lesson-list')!
@@ -64,6 +69,31 @@ const contentEl = document.getElementById('content')!
 const sidebarEl = document.getElementById('sidebar')!
 const menuToggleEl = document.getElementById('menu-toggle')!
 const backdropEl = document.getElementById('sidebar-backdrop')!
+const lightboxEl = document.getElementById('lightbox')!
+const lightboxImg = lightboxEl.querySelector('img')!
+
+// Lightbox Logic
+function openLightbox(src: string) {
+  if (!src) return;
+  lightboxImg.src = src;
+  lightboxEl.classList.add('visible');
+  lightboxEl.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightboxEl.classList.remove('visible');
+  lightboxEl.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  setTimeout(() => { lightboxImg.src = ''; }, 300);
+}
+
+lightboxEl.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lightboxEl.classList.contains('visible')) {
+    closeLightbox();
+  }
+});
 
 // Mobile Sidebar Logic
 function toggleSidebar() {
@@ -136,6 +166,24 @@ async function loadLesson(id: string) {
     
     // Scroll to top
     document.querySelector('main')?.scrollTo(0, 0)
+    
+    // Enhance Content
+    // 1. Lightbox for Images
+    contentEl.querySelectorAll('img').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+
+    // 2. Responsive Tables (Add data-label from headers)
+    contentEl.querySelectorAll('table').forEach(table => {
+      const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent || '');
+      table.querySelectorAll('tbody tr').forEach(tr => {
+        Array.from(tr.querySelectorAll('td')).forEach((td, index) => {
+          if (headers[index]) {
+            td.setAttribute('data-label', headers[index]);
+          }
+        });
+      });
+    });
     
     // Syntax Highlight
     hljs.highlightAll()
