@@ -37,14 +37,17 @@ export const GameRules: React.FC = () => {
 
   const textures = [
     { 
+      id: 'rainbow',
       label: <span className="bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 bg-clip-text text-transparent">Rainbow</span>, 
       description: <span className="bg-gradient-to-r from-pink-500 via-pink-400 to-pink-500 bg-clip-text text-transparent italic">3 Naipes</span> 
     },
     { 
+      id: 'twotone',
       label: <span className="text-yellow-400">Two-tone</span>, 
       description: <span className="text-yellow-400 italic">2 Naipes</span> 
     },
     { 
+      id: 'monotone',
       label: <span className="text-purple-600">Monotone</span>, 
       description: <span className="text-purple-600 italic">1 Naipe</span> 
     },
@@ -93,7 +96,7 @@ export const GameRules: React.FC = () => {
              </div>
              
              <ul className="flex flex-col gap-3">
-               {textures.map(tex => <TextureRow key={tex.label} {...tex} />)}
+               {textures.map(tex => <TextureRow key={tex.id} {...tex} />)}
              </ul>
           </div>
 

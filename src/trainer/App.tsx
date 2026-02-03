@@ -1,4 +1,3 @@
-import React from 'react'
 import { TrainerPage } from '../ui/pages/TrainerPage'
 
 function App() {
