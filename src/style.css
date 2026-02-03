@@ -514,3 +514,10 @@ main {
   font-size: 1.25rem;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
+
+/* Specific fix for Trainer Link in Markdown Context */
+.markdown-body .trainer-link-btn {
+  width: fit-content;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

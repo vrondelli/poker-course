@@ -70,10 +70,12 @@ Adicionando naipes e pareamento, temos descrições como:
 
 Já entende os conceitos teóricos? Agora é hora de treinar seu "olho" no nosso simulador de boards.
 
-> [!TIP]
 > Tente bater seu recorde de tempo médio mantendo 100% de acerto!
 
-[👉 Ir para o Flop Trainer](/trainer.html)
+<a href="/trainer.html" class="trainer-link-btn">
+  <span class="icon">👉</span>
+  <span>Ir para o Flop Trainer</span>
+</a>
 
 # Como funciona a mecânica de bet na teoria?
 
@@ -118,7 +120,7 @@ Ao montar uma estratégia devemos fazer algumas perguntas:
     - Ex: se eu escolher uma estratégia de bet grande ou check com todo meu range, eu tenho 40% de fold equity, e na parte do range do vilão que continua eu tenho vantagem de nuts.
 
 2. **O quão balanceado eu devo deixar meu range e o quanto a população é capaz de explorá-lo?**
-    - Ex: Qual a probabilidade do vilão perceber o meu desequilíbrio (relação entre valor e blefes no range de alguma ação, como eu divido meu range entre bet e check) e se ele consegue reagir corretamente? Por exemplo, se tivermos um range de bet em determinada posição, qual a chance do vilão aumentar a frequência de check-raise? Se ele aumentar o range de call, como ficará nosso range na próxima street? Se ele aumentar o range de fold, como ficará nosso range na próxima street?
+    - Ex: Qual a probabilidade do vilão perceber o meu desequilíbrio (relação entre valor e blefes no range de alguma ação, como eu divido meu range entre bet e check) e se ele consegue reagir corretamente? Por exemplo, se tivermos um range-bet(bet 33% com todo seu range com 100% de frequência) em determinada situação, qual a chance do vilão aumentar a frequência de check-raise? Se ele aumentar o range de call, como ficará os 2 ranges na próxima street? Se ele aumentar o range de fold, como ficará os 2 ranges na próxima street?
 
 3. **Devo usar uma estratégia polarizada ou linear?**
     - **Devo polarizar meu range?**: Um range perfeitamente polarizado é quando o vilão fica indiferente entre dar call e fold. Então, ao polarizar, é necessário ter uma boa fold equity.

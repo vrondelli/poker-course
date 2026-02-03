@@ -202,12 +202,24 @@ export const TrainerPage: React.FC = () => {
 
   if (!userId) {
      return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-black/90 text-white gap-24 p-4">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-black/90 text-white gap-12 md:gap-24 p-4 pt-24 md:pt-4 relative overflow-y-auto">
+        <a 
+          href="index.html" 
+          className="absolute top-6 left-6 flex items-center gap-2 text-zinc-500 hover:text-white transition-colors group z-50"
+          title="Voltar ao Curso"
+        >
+          <span className="bg-zinc-800 p-2 rounded-lg group-hover:bg-zinc-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </span>
+          <span className="uppercase text-[10px] font-black tracking-widest hidden md:inline">Voltar</span>
+        </a>
         <div className="text-center flex flex-col gap-8">
-          <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-pulse">
+          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-pulse">
             Flop Mastery
           </h1>
-          <p className="text-zinc-400 text-3xl font-light tracking-wide">Train your poker mind.</p>
+          <p className="text-zinc-400 text-xl md:text-3xl font-light tracking-wide">Train your poker mind.</p>
         </div>
         <div className="flex flex-col md:flex-row gap-6 w-full max-w-2xl items-center">
           <input 
@@ -230,13 +242,25 @@ export const TrainerPage: React.FC = () => {
 
   if (!isPlaying) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-black/90 text-white gap-10 p-4 py-12">
-        <div className="text-center flex flex-col gap-4">
-          <h1 className="text-5xl md:text-7xl font-bold text-white text-center">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-black/90 text-white gap-4 md:gap-6 p-2 pt-20 md:pt-8 relative overflow-y-auto">
+        <a 
+          href="index.html" 
+          className="absolute top-6 left-6 flex items-center gap-2 text-zinc-500 hover:text-white transition-colors group z-50"
+          title="Voltar ao Curso"
+        >
+          <span className="bg-zinc-800 p-2 rounded-lg group-hover:bg-zinc-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </span>
+          <span className="uppercase text-[10px] font-black tracking-widest hidden md:inline">Voltar</span>
+        </a>
+        <div className="text-center flex flex-col gap-2 md:gap-3">
+          <h1 className="text-3xl md:text-6xl font-bold text-white text-center">
             Welcome, <span className="text-blue-400">{userName}</span>
           </h1>
-          <p className="text-zinc-400 max-w-2xl text-center text-xl font-light tracking-wide">
-            Categorize the flop: Texture &rarr; Structure &rarr; Pairing &rarr; Connectivity.
+          <p className="text-zinc-400 max-w-2xl text-center text-sm md:text-lg font-light tracking-wide">
+             Categorize the flop: Texture &rarr; Structure &rarr; Pairing &rarr; Connectivity.
           </p>
         </div>
 
@@ -244,7 +268,7 @@ export const TrainerPage: React.FC = () => {
 
         <button 
           onClick={handleStart}
-          className="w-full md:w-80 h-20 px-0 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black text-2xl transition-all hover:scale-105 shadow-xl shadow-blue-900/30 whitespace-nowrap flex items-center justify-center animate-pulse"
+          className="w-full md:w-80 h-16 md:h-20 px-0 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black text-xl md:text-2xl transition-all hover:scale-105 shadow-xl shadow-blue-900/30 whitespace-nowrap flex items-center justify-center animate-pulse shrink-0"
         >
           Start Training
         </button>
