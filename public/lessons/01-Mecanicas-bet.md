@@ -1,10 +1,10 @@
-Para entender as mecânicas de bet, primeiro precisamos entender 2 conceitos fundamentais: **Range Advantage** e **Nut Advantage**.
+# Para entender as mecânicas de bet, primeiro precisamos compreender dois conceitos fundamentais: **Range Advantage** (Vantagem de Range) e **Nut Advantage** (Vantagem de Nuts).
 
 ### O que é vantagem de range (Range Advantage) e vantagem de nuts (Nut Advantage)?
 
-1. **Range Advantage (Vantagem de Range):** Ocorre quando o conjunto total de mãos possíveis de um jogador (seu range) possui maior equidade (chance de ganhar) e força média superior à do range do oponente em um determinado board.
+1. **Range Advantage:** Ocorre quando o conjunto total de mãos possíveis de um jogador (seu range) possui maior equidade (chance de ganhar) e força média superior à do range do oponente em um determinado board.
 
-2. **Nut Advantage (Vantagem de Nuts):** Ocorre quando um jogador possui uma proporção maior de mãos extremamente fortes (o "nuts", como trincas, sequências ou flushes) em seu range do que o oponente em um determinado board.
+2. **Nut Advantage:** Ocorre quando um jogador possui uma proporção maior de mãos extremamente fortes (o "nuts", como trincas, sequências ou flushes) em seu range do que o oponente em um determinado board.
 
 Além disso, utilizamos categorias para agrupar tipos de boards, o que facilita a criação de uma estratégia de bet consistente.
 
@@ -64,6 +64,17 @@ Adicionando naipes e pareamento, temos descrições como:
 3. **Molhado e Dinâmico:** [cards: 8♠ 7♠ 6♦] two-tone.
 4. **Seco e Dinâmico:** [cards: A♠ A♥ 8♦] (embora pareça estático, um full house define a mão, mas draws podem não ser tão óbvios). *Nota: Boards pareados geralmente são considerados estáticos, "Seco e Dinâmico" é uma categoria rara, geralmente refere-se a boards rainbow com pouca conectividade mas que cartas altas podem mudar o topo do range.*
 
+---
+
+# Pratique Agora
+
+Já entende os conceitos teóricos? Agora é hora de treinar seu "olho" no nosso simulador de boards.
+
+> [!TIP]
+> Tente bater seu recorde de tempo médio mantendo 100% de acerto!
+
+[👉 Ir para o Flop Trainer](/trainer.html)
+
 # Como funciona a mecânica de bet na teoria?
 
 ## O que afeta a frequência de bet?
@@ -86,7 +97,7 @@ Adicionando naipes e pareamento, temos descrições como:
 
 # Como montar uma estratégia de bet no Flop?
 
-Primeiro, categorizamos o board. Podemos usar categorias gerais (Seco/Estático, Molhado/Dinâmico) ou específicas (High-Low-Low Rainbow). Quando mais específica a categoria e a leitura do range, mais precisa (e complexa) será a estratégia, aumentando o EV.
+Primeiro, categorizamos o board. Podemos usar categorias gerais (Seco/Estático, Molhado/Dinâmico) ou específicas (High-Low-Low Rainbow). Quanto mais específica a categoria e a leitura do range, mais precisa (e complexa) será a estratégia, aumentando o EV.
 
 Geralmente, simplificamos para 2 ou 3 tamanhos de aposta padrão para cobrir a maioria das situações:
 - **Size Pequeno:** 20% a 33% do pot (1/5 a 1/3).
@@ -100,6 +111,21 @@ Geralmente, simplificamos para 2 ou 3 tamanhos de aposta padrão para cobrir a m
     - **Rainbow:** Size Pequeno a Médio (33%).
     - **Two-tone:** Size Médio a Grande (50-66%) por conta dos draws.
     - **Monotone:** Size Pequeno (25-33%) pois a equidade muda drasticamente e queremos controlar o pote.
+
+Ao montar uma estratégia devemos fazer algumas perguntas:
+
+1. **Qual o meu objetivo ao selecionar certo size e em qual princípio estou me baseando?**
+    - Ex: se eu escolher uma estratégia de bet grande ou check com todo meu range, eu tenho 40% de fold equity, e na parte do range do vilão que continua eu tenho vantagem de nuts.
+
+2. **O quão balanceado eu devo deixar meu range e o quanto a população é capaz de explorá-lo?**
+    - Ex: Qual a probabilidade do vilão perceber o meu desequilíbrio (relação entre valor e blefes no range de alguma ação, como eu divido meu range entre bet e check) e se ele consegue reagir corretamente? Por exemplo, se tivermos um range de bet em determinada posição, qual a chance do vilão aumentar a frequência de check-raise? Se ele aumentar o range de call, como ficará nosso range na próxima street? Se ele aumentar o range de fold, como ficará nosso range na próxima street?
+
+3. **Devo usar uma estratégia polarizada ou linear?**
+    - **Devo polarizar meu range?**: Um range perfeitamente polarizado é quando o vilão fica indiferente entre dar call e fold. Então, ao polarizar, é necessário ter uma boa fold equity.
+    - **Preciso proteger o meio do meu range?**: Tenho mãos de valor médio que conseguem extrair valor do vilão?
+
+4. **A população comete mais erros contra qual tipo de estratégia?**
+    - Ex: É importante se perguntar se o vilão irá foldar mais mãos do que deveria (overfold) ou pagar mais mãos do que deveria (overcall). Assim você consegue calibrar frequência e sizing para forçar o vilão numa árvore de decisão que ele não é capaz de lidar. Se ele está overfolding, podemos ajustar a frequência, adicionando mais blefes e diminuindo o sizing. Se ele está overcalling, podemos ajustar a frequência, diminuindo os blefes e aumentando o sizing.
 
 # Exercicio
 
@@ -116,12 +142,4 @@ As imagens abaixo mostram os **Ranges no Flop**:
 2. **MML Two-tone:** (Ex: [cards: 9♠ 8♠ 4♦])
 3. **MLL Monotone:** (Ex: [cards: 7♠ 4♠ 2♠])
 4. **HHL Connected:** (Ex: [cards: K♠ Q♥ 3♦])
-
-
-
-
-
-
-
-
 

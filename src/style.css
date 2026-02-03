@@ -1,4 +1,7 @@
+@import "tailwindcss";
+
 :root {
+
   --bg-color: #09090b; /* Zinc 950 (Almost Black) */
   --sidebar-bg: #18181b; /* Zinc 900 */
   --text-main: #f4f4f5; /* Zinc 100 */
@@ -11,11 +14,7 @@
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 
 body {
   font-family: var(--font-main);
@@ -27,10 +26,12 @@ body {
   overflow: hidden;
 }
 
-#app {
+#app, #root {
   display: flex;
   width: 100%;
   height: 100%;
+  flex-direction: column; /* Ensure vertical stacking */
+  overflow-y: auto;     /* Allow scrolling if content is taller */
 }
 
 /* Sidebar */
@@ -386,4 +387,38 @@ main {
 .markdown-body img {
   max-width: 100%;
   height: auto;
+}
+/* Sidebar Footer & Trainer Link */
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.trainer-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 1rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.trainer-link-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+  filter: brightness(1.1);
+}
+
+.trainer-link-btn .icon {
+  font-size: 1.25rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }

@@ -42,6 +42,12 @@ app.innerHTML = `
     <nav>
       <ul id="lesson-list"></ul>
     </nav>
+    <div class="sidebar-footer">
+      <a href="/trainer.html" class="trainer-link-btn">
+        <span class="icon">🎮</span>
+        <span>Flop Trainer</span>
+      </a>
+    </div>
   </aside>
   <main>
     <div id="content" class="markdown-body">
