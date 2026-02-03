@@ -47,6 +47,7 @@ export const TrainerPage: React.FC = () => {
   // Global Flow State
   const [globalAnswers, setGlobalAnswers] = useState<Record<number, TableAnswer>>(savedState?.globalAnswers || {});
   const [showRoundResults, setShowRoundResults] = useState(false);
+  const [showRules, setShowRules] = useState(false);
 
   // Effect to save state to localStorage
   useEffect(() => {
@@ -67,12 +68,12 @@ export const TrainerPage: React.FC = () => {
 
   // Sync engine start/stop with isPlaying state
   useEffect(() => {
-    if (isPlaying && !showRoundResults) {
+    if (isPlaying && !showRoundResults && !showRules) {
       engine.start();
     } else {
       engine.stop();
     }
-  }, [isPlaying, showRoundResults, engine]);
+  }, [isPlaying, showRoundResults, showRules, engine]);
 
   useEffect(() => {
     const unsubscribe = engine.subscribe((newTables, newStats) => {
@@ -243,7 +244,7 @@ export const TrainerPage: React.FC = () => {
 
         <button 
           onClick={handleStart}
-          className="w-full md:w-56 h-16 px-0 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-bold text-xl transition-all hover:scale-105 shadow-xl shadow-blue-900/30 whitespace-nowrap flex items-center justify-center animate-pulse"
+          className="w-full md:w-80 h-20 px-0 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black text-2xl transition-all hover:scale-105 shadow-xl shadow-blue-900/30 whitespace-nowrap flex items-center justify-center animate-pulse"
         >
           Start Training
         </button>
@@ -252,24 +253,53 @@ export const TrainerPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black/90 text-white p-4 flex flex-col items-center">
+    <div className="min-h-screen bg-black/90 text-white p-4 flex flex-col items-center relative">
+      {/* Rules Modal */}
+      {showRules && (
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-200">
+           <button 
+            onClick={() => setShowRules(false)}
+            className="fixed top-4 right-4 z-[60] bg-zinc-800 text-white p-3 rounded-full hover:bg-zinc-700 transition"
+           >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+           </button>
+           <div className="max-w-5xl w-full my-auto">
+             <GameRules />
+           </div>
+        </div>
+      )}
+
       <div className="w-full max-w-[85vw] flex flex-col gap-6 h-full flex-1">
         {/* Header Stats / Round Results Controller */}
         <header className={`flex flex-col md:flex-row justify-between items-center bg-zinc-900 border ${showRoundResults ? 'border-blue-500/30 py-4 px-10' : 'border-zinc-800 p-4 md:p-6'} rounded-[2.5rem] backdrop-blur-md shadow-xl gap-4 transition-all duration-500`}>
           <div className="flex flex-col md:flex-row items-center gap-6">
-            {/* Back to Course Button */}
-            <a 
-              href="index.html" 
-              className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors group"
-              title="Voltar ao Curso"
-            >
-              <span className="bg-zinc-800 p-2 rounded-lg group-hover:bg-zinc-700 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-              </span>
-              <span className="uppercase text-[10px] font-black tracking-widest hidden md:inline">Voltar</span>
-            </a>
+            <div className="flex items-center gap-3">
+              {/* Back to Course Button */}
+              <a 
+                href="index.html" 
+                className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors group"
+                title="Voltar ao Curso"
+              >
+                <span className="bg-zinc-800 p-2 rounded-lg group-hover:bg-zinc-700 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                  </svg>
+                </span>
+                <span className="uppercase text-[10px] font-black tracking-widest hidden md:inline">Voltar</span>
+              </a>
+
+              {/* Rules Toggle Button */}
+              <button
+                onClick={() => setShowRules(true)}
+                className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group"
+                title="Ver Regras"
+              >
+                 <span className="bg-blue-500/10 border border-blue-500/20 p-2 rounded-lg group-hover:bg-blue-500/20 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                 </span>
+                 <span className="uppercase text-[10px] font-black tracking-widest hidden md:inline">Regras</span>
+              </button>
+            </div>
 
             <div className="text-center md:text-left">
               <h2 className={`${showRoundResults ? 'text-4xl' : 'text-3xl'} font-black italic uppercase tracking-tighter bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent transition-all`}>
